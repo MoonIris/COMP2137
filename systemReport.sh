@@ -18,23 +18,36 @@ echo 'HOSTNAME: ' "$HOSTNAME"
 echo -n 'OS: ' ; hostnamectl | grep -E 'Operating System:' | awk '/Operating System:/ {print $3, $4, $5}'
 echo -n 'UPTIME: ' ; uptime -p | sed 's/up//'
 echo
-#This is the hardware information section. Comments to each line filled whenever I get around to it
-#I'm too tired rn to write it. Will do tomorrow
-#But is done now. This part at least
-#
-#
+#This is the hardware information section
+#I get the cpu info using lscpu and you grep -E with ^ to only grab the line wiht the make and model then use awk -F to remove the : and print only the info needed. Then sed to remove all the white space and make it look nice for the report 
+#RAM is very similar to CPU. This time using free -h and using grep -E to get the mem size that is installed and using awk to only print the installed ram, no extras
+#For DISKS I use lsblk to bring up the disks using -o to only display NAME,SIZE,MODEL and use grep -v to exclude any lines which have loop. Leaving only the installed disks
+#For VIDEO I use lspci to bring up Video and use grep to grab VGA and awk -F : to print only after the third : leaving only the make and model of the video
 echo 'Hardware Information'
 echo '--------------------'
 echo -n 'CPU: ' ;  lscpu | grep -E '^Model name' | awk -F ':' '{print $2}' | sed 's/^[[:space:]]*//' 
 echo -n 'RAM: ' ; free -h | grep -E '^Mem:' | awk '{print $2}'
 echo 'DISK(S): ' ; lsblk -o NAME,SIZE,MODEL | grep -v loop
-echo -n 'VIDEO: ' ; lspci | grep -i VGA | awk -F ':' '{print $3}' 
+echo -n 'VIDEO: ' ; lspci | grep -E VGA | awk -F ':' '{print $3}' 
 echo
-#
-#
-#
-#
-#
+#This is the network information section
+#Simply line using hostname --fqdn to specifically only grab the FQDN
+#I use ip addr show to show address and use grep -E to grab all inet lines while using grep -EV to exclude inet6 lines and 127.0.0.1 to exclude the local host leaving only the host address. Then awk to print only the host address on the line
+#Gateway IP using ip rote. Using grep to grab only the default and awk to only print the IP
+#Using cat I display the contents of /etc/resolv.conf. Then I use grep to grab only the line with the dns name server and then awk to only print the ip of the dns server
 echo 'Network Information'
 echo '-------------------'
-
+echo -n 'FQDN: ' ; hostname --fqdn 
+echo -n 'HOST ADDRESS: ' ; ip addr show | grep -E 'inet' | grep -Ev 'inet6|127.0.0.1' | awk '{print $2}'   
+echo -n 'GATEWAY IP: ' ; ip route | grep -E  default | awk '{print $3}'
+echo -n 'DNS SERVER: ' ; cat /etc/resolv.conf | grep -E '^nameserver' | awk '{print $2}' 
+echo
+#This is the system status section
+#
+#
+#
+#
+#
+#
+echo 'System Status'
+echo '-------------'
