@@ -1,0 +1,97 @@
+WARNING:root:Cannot call Open vSwitch: ovsdb-server.service is not running.
+dpkg-preconfigure: unable to re-open stdin: No such file or directory
+Host server1-mgmt not found in /home/Bridget/.ssh/known_hosts
+Warning: Permanently added 'server1-mgmt' (ED25519) to the list of known hosts.
+WARNING:root:Cannot call Open vSwitch: ovsdb-server.service is not running.
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.34.0 /usr/local/share/perl/5.34.0 /usr/lib/x86_64-linux-gnu/perl5/5.34 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.34 /usr/share/perl/5.34 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7, <> line 33.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+sudo: systemclt: command not found
+sudo: systemclt: command not found
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 192.168.16.21. Set the 'ServerName' directive globally to suppress this message
+Syntax OK
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+Synchronizing state of squid.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable squid
+--2025-03-13 03:16:34--  https://www.squid-cache.org/Versions/v6/6.13/squid.conf.default
+Resolving www.squid-cache.org (www.squid-cache.org)... 104.130.201.120, 2001:4801:7827:102:ad34:6f78:b6dc:fbed
+Connecting to www.squid-cache.org (www.squid-cache.org)|104.130.201.120|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://www.squid-cache.org/Versions/ [following]
+--2025-03-13 03:16:39--  https://www.squid-cache.org/Versions/
+Reusing existing connection to www.squid-cache.org:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘/tmp/squid.conf’
+
+     0K ........                                               79.1M=0s
+
+2025-03-13 03:16:39 (79.1 MB/s) - ‘/tmp/squid.conf’ saved [8981]
+
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+Created directory '/home/dennis/.ssh'.
+Created directory '/home/aubrey/.ssh'.
+Created directory '/home/captain/.ssh'.
+Created directory '/home/snibbles/.ssh'.
+Created directory '/home/brownie/.ssh'.
+Created directory '/home/scooter/.ssh'.
+Created directory '/home/perrier/.ssh'.
+Created directory '/home/cindy/.ssh'.
+Created directory '/home/tiger/.ssh'.
+Created directory '/home/yoda/.ssh'.
+WARNING:root:Cannot call Open vSwitch: ovsdb-server.service is not running.
+Error: Command not found
+Error: Command not found
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 192.168.16.21. Set the 'ServerName' directive globally to suppress this message
+Syntax OK
+--2025-03-13 03:19:57--  https://www.squid-cache.org/Versions/v6/6.13/squid.conf.default
+Resolving www.squid-cache.org (www.squid-cache.org)... 104.130.201.120, 2001:4801:7827:102:ad34:6f78:b6dc:fbed
+Connecting to www.squid-cache.org (www.squid-cache.org)|104.130.201.120|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://www.squid-cache.org/Versions/ [following]
+--2025-03-13 03:19:59--  https://www.squid-cache.org/Versions/
+Reusing existing connection to www.squid-cache.org:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘/tmp/squid.conf’
+
+     0K ........                                               32.8M=0s
+
+2025-03-13 03:19:59 (32.8 MB/s) - ‘/tmp/squid.conf’ saved [8981]
+
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+WARNING:root:Cannot call Open vSwitch: ovsdb-server.service is not running.
