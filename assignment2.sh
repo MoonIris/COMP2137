@@ -3,7 +3,8 @@
 
 #This is the desired target server configuration code
 
-NETPLAN=$(grep -w "^addresses:" /etc/netplan/*.yaml | awk -F ': ' '{print $2}')
+NETPLAN=$(grep -A 1 "eth0" /etc/netplan/*.yaml | grep "addresses" | awk -F ': ' '{print $2}' | tr -d '[] ')
+NETPLAN_IP="192.168.16.21/24"
 DESIRED_IP='192.168.16.21'
 CURRENT_IP=$(grep -w "server1$" /etc/hosts | awk '{print $1}')
 APACHE_CHECK="sudo apachectl configtest"
@@ -11,16 +12,28 @@ SQUID_FILE="/etc/squid/squid.conf"
 SQUID_DEFAULT="/tmp/squid.conf"
 USERS=("dennis" "aubrey" "captain" "snibbles" "brownie" "scooter" "perrier" "cindy" "tiger" "yoda")
 
+#This section is for netplan and /etc/hosts
+
+echo "Checking IP address in netplan configuration file"
+
+sleep 2
+
+if [[ "$NETPLAN" != "$NETPLAN_IP" ]]; then
+        echo "Current IP is different in netplan. Updating, Please stand by..."
+        sleep 2
+        sudo sed -i "s|addresses: \[$NETPLAN\]|addresses: [$NETPLAN_IP]|" /etc/netplan/*.yaml
+        sudo netplan apply
+        sleep 2
+        echo "IP updated to $NETPLAN_IP in netplan configuration file"
+else
+        echo "Netplan IP configuration is already $NETPLAN_IP"
+fi
+
+sleep 2
 
 echo "Checking server1 IP address in /etc/hosts"
 
 sleep 2
-
-
-if [[ "$NETPLAN" != "$DESIRED_IP" ]]; then
-	echo "Current IP is different in netplan. Updating, Please stand by... "\
-	echo "$NETPLAN"
-fi
 
 if [[ "$CURRENT_IP" != "$DESIRED_IP" ]]; then
 	echo "Current IP is different then $DESIRED_IP. Updating, Please stand by..."
@@ -119,7 +132,7 @@ for user in ${USERS[@]}; do
 		if [[ $user == "dennis" ]]; then
 			sudo useradd -m -s /bin/bash  $user
 			sudo usermod -aG sudo $user
-			echo "User $user created as sudoer"
+			echo "User $user created as sudoer with home directory and bash as default shell"
 			sleep 2
 			echo "Now generating ssh keys for rsa and ed25519"
 			sudo -u "$user" ssh-keygen -t rsa -b 4096 -f "/home/$user/.ssh/id_rsa" -N ""
@@ -140,7 +153,7 @@ for user in ${USERS[@]}; do
 			sleep 2
 		else
 			sudo useradd -m -s /bin/bash $user
-			echo "User $user created"
+			echo "User $user created with home directory and bash as default shell"
 			sleep 2
 			echo "Now generating ssh keys for rsa and ed25519"
 			sudo -u "$user" ssh-keygen -t rsa -b 4096 -f "/home/$user/.ssh/id_rsa" -N ""
